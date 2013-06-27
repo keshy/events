@@ -25,7 +25,7 @@ class SavePrincessTest(unittest.TestCase):
         self.assertEqual(savePrincess.displayPathtoPrincess(2, test), None, "Passed test for invalid grid entry");
             
     def test_success(self):
-        self.assertNotEqual(savePrincess.displayPathtoPrincess(3, ['---', '-m-', '--p']), ['DOWN', 'RIGHT'], "Successfully saved the princess");    
+        self.assertNotEqual(savePrincess.displayPathtoPrincess(3, ['---', '-m-', '--p']), ['DOWN', 'RIGTH'], "Successfully saved the princess");    
 
 if __name__ == '__main__':
     unittest.main()
