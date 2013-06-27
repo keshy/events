@@ -10,9 +10,6 @@ class SavePrincessTest(unittest.TestCase):
     grid = [];
     n = 0;
     
-    def setup(self):
-        grid = ['---', '-m-', 'p--'];
-        n = 3;
     @unittest.skip("already tested")    
     def test_invalid(self):
         
