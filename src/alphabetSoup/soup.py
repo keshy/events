@@ -76,7 +76,7 @@ def getFrequency(lines):
         i += 1
             
             
-getFrequency(hackerUtils.ExtractContent.extractLines('test_input'))        
+getFrequency(hackerUtils.ExtractContent.extractLines('../lib/test_input'))        
     
             
             
