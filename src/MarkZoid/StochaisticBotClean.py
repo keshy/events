@@ -1,7 +1,7 @@
 '''
 Created on Jun 27, 2013
 
-Problem: https://www.hackerrank.com/challenges/saveprincess2
+Problem: https://www.hackerrank.com/challenges/botcleanr
 @author: Krishnan_Narayan
 '''
 '''
@@ -30,8 +30,8 @@ def next_move(x, y, grid):
     if bot == None or dirtyCells == None or dirtyCells.__len__() == 0:
         
         return None;
-    
-    bot_x, bot_y = x, y;
+    ' this problem inverts the row and column index'
+    bot_y, bot_x = x, y;
     princess_x, princess_y = dirtyCells[0];
     
     if bot_x == princess_x and bot_y == princess_y:
