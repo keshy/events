@@ -28,8 +28,8 @@ def next_move(x, y, grid):
     bot, dirtyCells = getCordinates(5, grid);
     
     if bot == None or dirtyCells == None or dirtyCells.__len__() == 0:
-        
         return None;
+    
     ' this problem inverts the row and column index'
     bot_y, bot_x = x, y;
     princess_x, princess_y = dirtyCells[0];
