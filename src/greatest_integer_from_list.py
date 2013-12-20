@@ -45,7 +45,6 @@ def setInitMax(items):
 
 	if len(items) == 0:
 		return
-	# TODO: more scope for optimization here. A quick BFS implementation here should be enough to get an initial valid maximum value
 	for item in items:
 		if isinstance(item, (int, long)):
 			return item
@@ -80,7 +79,7 @@ if __name__ == "__main__":
 	if not result:
 		print "No integer was found in input..."
 	else:
-		print "Max integer in the list is = %s" % str(result)
+		print "Max integer in the list is = %s" % result
 
 
 
