@@ -11,7 +11,7 @@ def getMaxFromList(max, items):
 	we set max to that item value and return max 
 
 	@param max: Maximum value found in the root array so far 
-	@type max: integer
+	@type max: int
 	@param items: List of items that includes items and other lists 
 	@type items: list
 
