@@ -39,12 +39,10 @@ def setInitMax(items):
 		logger.debug('Empty List: nothing to process!')
 		return
 
-	# set initial max value to the first element in the list. However if the first element in the list is a list itself then drill down and keep drilling down till you encounter a value 
-	# that is not an integer and set that value as the initial max value. This however is not efficient at all. Instead just pick a value from the list that is not a list and assign that
-	# as the max value. However you must also handle the case of assigning the max value when you have a list of lists and has more subsequent list. 
-
+	# do a pass to find first occurence of an integer in the list
 	if len(items) == 0:
 		return
+
 	for item in items:
 		if isinstance(item, (int, long)):
 			return item
