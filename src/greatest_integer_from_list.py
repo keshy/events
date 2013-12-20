@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger('maxinteger')
 
 
-def getMaxFromList(max, items):
+def getMaxFromList(max, items, trace):
 
 	"""
 
@@ -18,46 +18,42 @@ def getMaxFromList(max, items):
 	@rtype: int 
 	"""
 
-	if not max:
-		raise Exception("No max value found on initial pass")
 	# return the current max value if there is a none type in the items list or if the items list is empty
 	if not items or len(items) == 0:
 		return max
 
 	for item in items:
 		if isinstance(item, (int, long)):
-			if item > max:
+			if not max or item > max:
 				max = item
 		elif isinstance(item, list):
-			max = getMaxFromList(max=max, items=item)
+			if trace:
+				trace.increment()
+			max = getMaxFromList(max=max, items=item, trace=trace)
 
 	return max
-
-def setInitMax(items):
 	
-	if not items:
-		logger.debug('Empty List: nothing to process!')
-		return
+class RecursionTrace:
 
-	if len(items) == 0:
-		return
-	# do a pass over this level to look for integers
-	for item in items:
-		if isinstance(item, (int, long)):
-			return item
+	def __init__(self):
+		self.count = 0
 
-	# no integers found in this pass. go into the first array that you see. 	
-	for item in items:
-		if isinstance(item, list):
-			setInitMax(item)
-	return None
+	def reset(self):
+		self.count = 0
+
+	def increment(self):
+		self.count = self.count + 1
+
+	def __str__(self):
+		return "Total calls : %s" % str(self.count)
+
 
 
 if __name__ == "__main__":
 
 	# get initial max value
 	items = []
-	a = [[1,["abc",'d','e'],[23,[],[],[334,2345,[2]]]], 1, 4, 10, 16]
+	a = [[1,["abc",'d','e'],[23,[],[],[334,2346,[2]]]], 1, 4, 10, 16]
 	b = [1, 2, 3, 4]
 	c = [[], [], []]
 	# test case for setInit function.
@@ -68,15 +64,15 @@ if __name__ == "__main__":
 	items.extend(d)
 	print "data = %s " % items
 
-	max = setInitMax(items)
-
 	logger.debug("Evaluating maximum integer")
+	trace = RecursionTrace()
+	result = getMaxFromList(None, items, trace) 
 	
-	result = getMaxFromList(max, items) 
 	if not result:
 		print "No integer was found in input..."
 	else:
 		print "Max integer in the list is = %s" % result
+	print "Recursion Trace - %s " % trace
 
 
 
