@@ -39,10 +39,9 @@ def setInitMax(items):
 		logger.debug('Empty List: nothing to process!')
 		return
 
-	# do a pass to find first occurence of an integer in the list
 	if len(items) == 0:
 		return
-
+	# do a pass over this level to look for integers
 	for item in items:
 		if isinstance(item, (int, long)):
 			return item
